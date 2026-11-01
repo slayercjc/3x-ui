@@ -1,0 +1,13 @@
+# 文件名<TAB>原文<TAB>中文
+install.sh	The OS release is:	操作系统版本：
+install.sh	Unsupported CPU architecture!	不支持的 CPU 架构！
+install.sh	Please run this script with root privilege	请使用 root 权限运行此脚本
+install.sh	Failed to check the system OS, please contact the author!	无法检测系统操作系统，请联系作者！
+x-ui.sh	Restart the panel, Attention: Restarting the panel will also restart xray	重启面板，注意：重启面板也会重启 Xray
+x-ui.sh	This function will update all x-ui components to the latest version, and the data will not be lost. Do you want to continue?	此功能会将所有 x-ui 组件更新到最新版本，数据不会丢失。是否继续？
+x-ui.sh	Cancelled	已取消
+x-ui.sh	Press enter to return to the main menu:	按 Enter 返回主菜单：
+x-ui.sh	Are you sure you want to uninstall the panel? xray will also uninstalled!	确定要卸载面板吗？Xray 也会被卸载！
+x-ui.sh	Please set the login username [default is a random username]:	请设置登录用户名【默认为随机用户名】：
+x-ui.sh	Please set the login password [default is a random password]:	请设置登录密码【默认为随机密码】：
+x-ui.sh	Do you want to disable currently configured two-factor authentication? (y/n):	是否禁用当前配置的双因素认证？（y/n）：
