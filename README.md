@@ -5,7 +5,7 @@
 ## 使用
 
 ```bash
-bash <(curl -fsSL https://raw.githubusercontent.com/slayercjc/3x-ui-cn-sync/main/dist/install-cn.sh)
+bash <(curl -fsSL https://raw.githubusercontent.com/slayercjc/3x-ui/main/dist/install-cn.sh)
 ```
 
 生成后的脚本位于 `dist/install-cn.sh` 和 `dist/x-ui-cn.sh`。发布前请先检查 GitHub Actions 的构建结果。
