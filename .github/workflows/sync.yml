@@ -27,6 +27,8 @@ jobs:
         run: python3 tools/auto_translate.py
       - name: Build translated scripts
         run: python3 tools/build-cn.py
+      - name: Patch multiline menus and fixed messages
+        run: python3 tools/patch_menu.py
       - name: Check shell syntax
         run: bash -n dist/install-cn.sh && bash -n dist/x-ui-cn.sh
       - name: Commit generated scripts
