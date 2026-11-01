@@ -31,8 +31,6 @@ text, count = re.subn(r"show_usage\(\) \{.*?^\}", menu, text, count=1, flags=re.
 if count != 1:
     raise SystemExit("show_usage function was not found; upstream layout changed")
 
-install = root / "dist" / "install-cn.sh"
-install_text = install.read_text(encoding="utf-8")
 replacements = {
     "Fail2ban setup complete.": "Fail2ban 设置完成。",
     "Setting up Fail2ban for the IP Limit feature...": "正在为 IP 限制功能设置 Fail2ban……",
@@ -42,8 +40,18 @@ replacements = {
     "If you need to install this panel again, you can use below command:": "如果需要重新安装此面板，请使用以下命令：",
     "bash <(curl -Ls https://raw.githubusercontent.com/mhsanaei/3x-ui/master/install.sh)": "bash <(curl -fsSL https://raw.githubusercontent.com/slayercjc/3x-ui/main/dist/install-cn.sh)",
 }
+
+install = root / "dist" / "install-cn.sh"
+install_text = install.read_text(encoding="utf-8")
 for old, new in replacements.items():
     install_text = install_text.replace(old, new)
+
+# The uninstall/reinstall messages are also present in the management script.
+text = text.replace("bash <(curl -Ls https://raw.githubusercontent.com/mhsanaei/3x-ui/master/install.sh)",
+                    "bash <(curl -fsSL https://raw.githubusercontent.com/slayercjc/3x-ui/main/dist/install-cn.sh)")
+text = text.replace("Uninstalled Successfully.", "卸载成功。")
+text = text.replace("If you need to install this panel again, you can use below command:",
+                    "如果需要重新安装此面板，请使用以下命令：")
 
 # The release archive installs the official management script after the panel
 # files are unpacked. Replace the live command at the end of installation so
@@ -56,10 +64,12 @@ if [[ -x /usr/bin/x-ui ]]; then
     if curl -fsSL "${_xui_cn_url}" -o /usr/bin/x-ui-cn.tmp; then
         chmod +x /usr/bin/x-ui-cn.tmp
         mv -f /usr/bin/x-ui-cn.tmp /usr/bin/x-ui
-        if [[ -n "${xui_folder:-}" && -d "${xui_folder}" ]]; then
-            curl -fsSL "${_xui_cn_url}" -o "${xui_folder}/x-ui.sh"
-            chmod +x "${xui_folder}/x-ui.sh"
-        fi
+        for _xui_cn_target in "${xui_folder:-/usr/local/x-ui}/x-ui.sh" "/usr/local/x-ui/x-ui.sh"; do
+            if [[ -d "$(dirname "${_xui_cn_target}")" ]]; then
+                curl -fsSL "${_xui_cn_url}" -o "${_xui_cn_target}"
+                chmod +x "${_xui_cn_target}"
+            fi
+        done
     fi
 fi
 '''
