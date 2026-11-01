@@ -38,6 +38,9 @@ replacements = {
     "Setting up Fail2ban for the IP Limit feature...": "正在为 IP 限制功能设置 Fail2ban……",
     "x-ui v": "x-ui v",
     "installation finished, it is running now...": "安装完成，当前正在运行……",
+    "Uninstalled Successfully.": "卸载成功。",
+    "If you need to install this panel again, you can use below command:": "如果需要重新安装此面板，请使用以下命令：",
+    "bash <(curl -Ls https://raw.githubusercontent.com/mhsanaei/3x-ui/master/install.sh)": "bash <(curl -fsSL https://raw.githubusercontent.com/slayercjc/3x-ui/main/dist/install-cn.sh)",
 }
 for old, new in replacements.items():
     install_text = install_text.replace(old, new)
