@@ -247,7 +247,7 @@ legacy_version() {
     read -r tag_version
 
     if [ -z "$tag_version" ]; then
-        echo "面板版本不能为空。正在退出。"
+        echo "面板版本不能为空，正在退出。"
         exit 1
     fi
     # Use the entered panel version in the download link
@@ -320,7 +320,7 @@ uninstall() {
     fi
 
     echo ""
-    echo -e "已成功卸载。n"
+    echo -e "卸载成功。\n"
     echo "如果需要重新安装此面板，可以使用以下命令："
     echo -e "${green}bash <(curl -Ls https://raw.githubusercontent.com/mhsanaei/3x-ui/master/install.sh)${plain}"
     echo ""
@@ -476,7 +476,7 @@ check_config() {
     else
         echo -e "${red}⚠ WARNING: No SSL certificate configured!${plain}"
         echo -e "${yellow}You can get a Let's Encrypt certificate for your IP address (valid ~6 days, auto-renews).${plain}"
-        read -rp "立即为该 IP 地址生成 SSL 证书？[y/N]" gen_ssl
+        read -rp "现在为 IP 生成 SSL 证书吗？[y/N]： " gen_ssl
         if [[ "$gen_ssl" == "y" || "$gen_ssl" == "Y" ]]; then
             stop 0 > /dev/null 2>&1
             ssl_cert_issue_for_ip
@@ -497,7 +497,7 @@ check_config() {
 }
 
 set_port() {
-    echo -n "请输入端口号[1-65535]:"
+    echo -n "请输入端口号 [1-65535]： "
     read -r port
     if [[ -z "${port}" ]]; then
         LOGD "已取消"
@@ -714,7 +714,7 @@ show_log() {
     if [[ $release == "alpine" ]]; then
         echo -e "${green}\t1.${plain} Debug Log"
         echo -e "${green}\t0.${plain} Back to Main Menu"
-        read -rp "请选择一个选项：" choice
+        read -rp "请选择一个选项： " choice
 
         case "$choice" in
             0)
@@ -735,7 +735,7 @@ show_log() {
         echo -e "${green}\t1.${plain} Debug Log"
         echo -e "${green}\t2.${plain} Clear All logs"
         echo -e "${green}\t0.${plain} Back to Main Menu"
-        read -rp "请选择一个选项：" choice
+        read -rp "请选择一个选项： " choice
 
         case "$choice" in
             0)
@@ -765,7 +765,7 @@ bbr_menu() {
     echo -e "${green}\t1.${plain} Enable BBR"
     echo -e "${green}\t2.${plain} Disable BBR"
     echo -e "${green}\t0.${plain} Back to Main Menu"
-    read -rp "请选择一个选项：" choice
+    read -rp "请选择一个选项： " choice
     case "$choice" in
         0)
             show_menu
@@ -1044,7 +1044,7 @@ firewall_menu() {
     echo -e "${green}\t6.${plain} ${red}Disable${plain} Firewall"
     echo -e "${green}\t7.${plain} Firewall Status"
     echo -e "${green}\t0.${plain} Back to Main Menu"
-    read -rp "请选择一个选项：" choice
+    read -rp "请选择一个选项： " choice
     case "$choice" in
         0)
             show_menu
@@ -1095,7 +1095,7 @@ install_firewall() {
 
     # Check if the firewall is inactive
     if ufw status | grep -q "Status: active"; then
-        echo "防火墙已激活"
+        echo "防火墙已经启用"
     else
         echo "正在启用防火墙……"
         # Open the necessary ports
@@ -1311,7 +1311,7 @@ update_geo() {
     echo -e "${green}\t3.${plain} runetfreedom (geoip_RU.dat, geosite_RU.dat)"
     echo -e "${green}\t4.${plain} All"
     echo -e "${green}\t0.${plain} Back to Main Menu"
-    read -rp "请选择一个选项：" choice
+    read -rp "请选择一个选项： " choice
 
     case "$choice" in
         0)
@@ -1368,7 +1368,7 @@ ssl_cert_issue_main() {
     echo -e "${green}\t6.${plain} Get SSL for IP Address (6-day cert, auto-renews)"
     echo -e "${green}\t0.${plain} Back to Main Menu"
 
-    read -rp "请选择一个选项：" choice
+    read -rp "请选择一个选项： " choice
     case "$choice" in
         0)
             show_menu
@@ -1469,7 +1469,7 @@ ssl_cert_issue_main() {
         5)
             echo -e "${green}\t1.${plain} Use a certificate from /root/cert"
             echo -e "${green}\t2.${plain} Enter custom certificate file paths (e.g. certbot, /etc/letsencrypt/...)"
-            read -rp "请选择一个选项：" pathChoice
+            read -rp "请选择一个选项： " pathChoice
             if [[ "$pathChoice" == "2" ]]; then
                 read -rp "证书文件路径（完整证书链）：" webCertFile
                 read -rp "私钥文件路径：" webKeyFile
@@ -1896,7 +1896,7 @@ ssl_cert_issue() {
         echo -e "\n${green}\t1.${plain} Preset: systemctl reload nginx ; x-ui restart"
         echo -e "${green}\t2.${plain} Input your own command"
         echo -e "${green}\t0.${plain} Keep default reloadcmd"
-        read -rp "请选择一个选项：" choice
+        read -rp "请选择一个选项： " choice
         case "$choice" in
             1)
                 LOGI "Reloadcmd is: systemctl reload nginx ; x-ui restart"
@@ -2061,7 +2061,7 @@ ssl_cert_issue_CF() {
             echo -e "\n${green}\t1.${plain} Preset: systemctl reload nginx ; x-ui restart"
             echo -e "${green}\t2.${plain} Input your own command"
             echo -e "${green}\t0.${plain} Keep default reloadcmd"
-            read -rp "请选择一个选项：" choice
+            read -rp "请选择一个选项： " choice
             case "$choice" in
                 1)
                     LOGI "Reloadcmd is: systemctl reload nginx ; x-ui restart"
@@ -2182,7 +2182,7 @@ iplimit_main() {
     echo -e "${green}\t9.${plain} Service Restart"
     echo -e "${green}\t10.${plain} Uninstall Fail2ban and IP Limit"
     echo -e "${green}\t0.${plain} Back to Main Menu"
-    read -rp "请选择一个选项：" choice
+    read -rp "请选择一个选项： " choice
     case "$choice" in
         0)
             show_menu
@@ -2413,7 +2413,7 @@ remove_iplimit() {
     echo -e "${green}\t1.${plain} Only remove IP Limit configurations"
     echo -e "${green}\t2.${plain} Uninstall Fail2ban and IP Limit"
     echo -e "${green}\t0.${plain} Back to Main Menu"
-    read -rp "请选择一个选项：" num
+    read -rp "请选择一个选项： " num
     case "$num" in
         1)
             rm -f /etc/fail2ban/filter.d/3x-ipl.conf
@@ -2670,16 +2670,16 @@ SSH_port_forwarding() {
         echo -e "${yellow}http://localhost:2222${existing_webBasePath}${plain}"
     fi
 
-    echo -e "请选择一个选项："
+    echo -e "\n请选择一个选项："
     echo -e "${green}1.${plain} Set listen IP"
     echo -e "${green}2.${plain} Clear listen IP"
     echo -e "${green}0.${plain} Back to Main Menu"
-    read -rp "请选择一个选项：" num
+    read -rp "请选择一个选项： " num
 
     case "$num" in
         1)
             if [[ -z "$existing_listenIP" || "$existing_listenIP" == "0.0.0.0" ]]; then
-                echo -e "未配置监听IP地址。请选择一个选项："
+                echo -e "\nNo listenIP configured. 请选择一个选项："
                 echo -e "1. 使用默认 IP 地址 (127.0.0.1)"
                 echo -e "2. 设置自定义 IP"
                 read -rp "请选择一个选项（1 或 2）：" listen_choice
@@ -3329,7 +3329,7 @@ PostgreSQL_menu() {
     echo -e "${green}\t9.${plain} Convert SQLite ${green}.db <-> .dump${plain}"
     echo -e "${green}\t10.${plain} Install/Upgrade client tools (pg_dump/pg_restore)"
     echo -e "${green}\t0.${plain} Back to Main Menu"
-    read -rp "请选择一个选项：" choice
+    read -rp "请选择一个选项： " choice
     case "$choice" in
         0)
             show_menu

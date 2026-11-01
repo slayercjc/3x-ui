@@ -39,3 +39,148 @@ x-ui.sh	Choose an option:	请选择一个选项：
 x-ui.sh	All Logs cleared.	所有日志已清除。
 x-ui.sh	Firewall is already active	防火墙已经启用
 x-ui.sh	Activating firewall...	正在启用防火墙……
+install.sh	--listen-v6	--listen-v6
+install.sh	# Added by 3x-ui: allow password logins for the panel database.	# 由 3x-ui 添加：允许面板数据库使用密码登录。
+install.sh	Enter another port for acme.sh standalone listener (leave empty to abort): 	请输入 acme.sh 独立监听器的另一个端口（留空则中止）：
+install.sh	acme.sh could not be found. Installing now...	找不到 acme.sh 文件。正在安装……
+install.sh	Please enter your domain name: 	请输入您的域名：
+install.sh	Would you like to modify --reloadcmd for ACME? (y/n): 	您是否要修改 ACME 的 --reloadcmd 参数？（y/n）
+install.sh	Choose an option: 	请选择一个选项：
+install.sh	Please enter your custom reloadcmd: 	请输入您的自定义 reloadcmd：
+install.sh	Installing key to:	安装密钥至：
+install.sh	Installing full chain to:	安装全链至：
+install.sh	Would you like to set this certificate for the panel? (y/n): 	是否要为面板设置此证书？（y/n）
+install.sh	Choose an option (default 2 for IP): 	选择一个选项（默认选项为 2，代表 IP）：
+install.sh	Please enter domain name certificate issued for: 	请输入颁发给以下域名的证书：
+install.sh	Input certificate path (keywords: .crt / fullchain): 	输入证书路径（关键字：.crt / 完整证书链）：
+install.sh	Input private key path (keywords: .key / privatekey): 	输入私钥路径（关键字：.key / privatekey）：
+install.sh	Bind the panel to 127.0.0.1 only? (recommended — forces SSH tunnel / reverse-proxy access) [y/N]: 	是否仅将面板绑定到 127.0.0.1？（推荐 — 强制使用 SSH 隧道/反向代理访问）[y/N]：
+install.sh	  Standard SSH command:	标准 SSH 命令：
+install.sh	  If using an SSH key:	如果使用 SSH 密钥：
+install.sh	  Then open in your browser:	然后在浏览器中打开：
+install.sh	[:space:]	[：空间：]
+install.sh	  1) SQLite     (default — recommended for < 500 clients)	1) SQLite（默认 - 推荐用于客户端数量少于 500 的情况）
+install.sh	  2) PostgreSQL (recommended for high client counts / many nodes)	2) PostgreSQL（推荐用于客户端数量多/节点较多的情况）
+install.sh	Choose [1]: 	选择[1]：
+install.sh	  1) Install PostgreSQL locally and create a dedicated user/db (recommended)	1）在本地安装PostgreSQL并创建一个专用用户/数据库（推荐）
+install.sh	  2) Use an existing PostgreSQL server (enter DSN)	2) 使用现有的 PostgreSQL 服务器（输入 DSN）
+install.sh	  1) Retry local install	1）重试本地安装
+install.sh	  2) Enter an external DSN instead	2) 输入外部 DSN
+install.sh	  3) Abort install	3）中止安装
+install.sh	  4) Fall back to SQLite	4）回退到 SQLite
+install.sh	Would you like to customize the Panel Port settings? (If not, a random port will be applied) [y/n]: 	您是否要自定义面板端口设置？（如果选择不自定义，系统将随机分配一个端口）[y/n]
+install.sh	Please set up the panel port: 	请设置面板端口：
+install.sh	Generated new random login credentials:	已生成新的随机登录凭据：
+install.sh	      The panel	小组
+install.sh	      The rest of the hardening is in force. Upgrade systemd to apply the above.	其余加固措施已生效。请升级 systemd 以应用上述措施。
+install.sh	Warning: these folders contain whitespace and were left out of	警告：这些文件夹包含空格，因此被遗漏了。
+install.sh	         The panel cannot write to them under the unit	该面板无法向该单元下的用户写入数据。
+install.sh	/etc/.gitignore	/etc/.gitignore
+x-ui.sh	--listen-v6	--listen-v6
+x-ui.sh	Failed to check the system OS, please contact the author!	无法检查系统操作系统，请联系作者！
+x-ui.sh	This will update x-ui to the latest DEV commit (the rolling 	这将把 x-ui 更新到最新的开发版本（滚动更新）。
+x-ui.sh	 build, not a stable release). Your data is preserved. Continue?	（此为构建版本，并非正式发布版本）。您的数据已保存。是否继续？
+x-ui.sh	This function will update the menu to the latest changes.	此功能会将菜单更新至最新更改。
+x-ui.sh	Enter the panel version (like 2.4.0):	请输入面板版本（例如 2.4.0）：
+x-ui.sh	/etc/default/x-ui	/etc/default/x-ui
+x-ui.sh	/etc/conf.d/x-ui	/etc/conf.d/x-ui
+x-ui.sh	/etc/sysconfig/x-ui	/etc/sysconfig/x-ui
+x-ui.sh	Uninstalled Successfully.\n	已成功卸载。n
+x-ui.sh	If you need to install this panel again, you can use below command:	如果需要重新安装此面板，可以使用以下命令：
+x-ui.sh	Are you sure to reset the username and password of the panel?	您确定要重置控制面板的用户名和密码吗？
+x-ui.sh	Please set the login username [default is a random username]: 	请设置登录用户名（默认为随机用户名）：
+x-ui.sh	Please set the login password [default is a random password]: 	请设置登录密码（默认密码为随机密码）：
+x-ui.sh	Do you want to disable currently configured two-factor authentication? (y/n): 	是否要禁用当前配置的双因素身份验证？（y/n）：
+x-ui.sh	Two factor authentication has been disabled.	双因素认证已禁用。
+x-ui.sh	Are you sure you want to reset the web base path? (y/n): 	您确定要重置网站基本路径吗？（y/n）
+x-ui.sh	Are you sure you want to reset all panel settings, Account data will not be lost, Username and password will not change	您确定要重置所有面板设置吗？账户数据不会丢失，用户名和密码也不会更改。
+x-ui.sh	All panel settings have been reset to default.	所有面板设置已重置为默认值。
+x-ui.sh	 | sed -E 	| sed -E
+x-ui.sh	 | grep -Eo 	| grep -Eo
+x-ui.sh	[:space:]	[：空间：]
+x-ui.sh	Please enter your server	请输入您的服务器地址
+x-ui.sh	 | grep -vx 	| grep -vx
+x-ui.sh	Generate SSL certificate for IP now? [y/N]: 	立即为该 IP 地址生成 SSL 证书？[y/N]
+x-ui.sh	Enter port number[1-65535]: 	请输入端口号[1-65535]:
+x-ui.sh	xray-core Restart signal sent successfully, Please check the log information to confirm whether xray restarted successfully	xray-core 重启信号已成功发送，请查看日志信息以确认 xray 是否已成功重启。
+x-ui.sh	Choose an option: 	请选择一个选项：
+x-ui.sh	ufw firewall is not installed. Installing now...	ufw防火墙未安装。正在安装……
+x-ui.sh	ufw firewall is already installed	ufw 防火墙已安装
+x-ui.sh	Enter the ports you want to open (e.g. 80,443,2053 or range 400-500): 	输入要打开的端口（例如 80、443、2053 或 400-500 范围）：
+x-ui.sh	Error: Invalid input. Please enter a comma-separated list of ports or a range of ports (e.g. 80,443,2053 or 400-500).	错误：输入无效。请输入以逗号分隔的端口列表或端口范围（例如 80,443,2053 或 400-500）。
+x-ui.sh	 read -ra PORT_LIST <<< 	读取 -ra 端口列表 <<<
+x-ui.sh	Opened the specified ports:	已打开指定端口：
+x-ui.sh	Current UFW rules:	现行UFW规则：
+x-ui.sh	Do you want to delete rules by:	您想按以下方式删除规则：
+x-ui.sh	1) Rule numbers	1）规则编号
+x-ui.sh	2) Ports	2）端口
+x-ui.sh	Enter your choice (1 or 2): 	请输入您的选择（1 或 2）：
+x-ui.sh	Enter the rule numbers you want to delete (1, 2, etc.): 	请输入要删除的规则编号（1、2 等）：
+x-ui.sh	Error: Invalid input. Please enter a comma-separated list of rule numbers.	错误：输入无效。请输入以逗号分隔的规则编号列表。
+x-ui.sh	 read -ra RULE_NUMBERS <<< 	读取 -ra 规则编号 <<<
+x-ui.sh	Selected rules have been deleted.	已删除部分规则。
+x-ui.sh	Enter the ports you want to delete (e.g. 80,443,2053 or range 400-500): 	输入要删除的端口（例如 80、443、2053 或 400-500 范围）：
+x-ui.sh	Deleted the specified ports:	已删除指定端口：
+x-ui.sh	No certificates found to revoke.	未找到需要撤销的证书。
+x-ui.sh	Existing domains:	现有域名：
+x-ui.sh	Please enter a domain from the list to revoke and remove the certificate: 	请从列表中选择要撤销并删除证书的域名：
+x-ui.sh	Invalid domain entered.	输入的域名无效。
+x-ui.sh	No certificates found to renew.	未找到可续期的证书。
+x-ui.sh	Please enter a domain from the list to renew the SSL certificate: 	请从列表中选择域名以续订 SSL 证书：
+x-ui.sh	No certificates found under /root/cert.	/root/cert 下未找到证书。
+x-ui.sh	Existing domains and their paths:	现有域名及其路径：
+x-ui.sh	Certificate file path (fullchain): 	证书文件路径（完整证书链）：
+x-ui.sh	Private key file path: 	私钥文件路径：
+x-ui.sh	Panel certificate paths set:	面板证书路径已设置：
+x-ui.sh	Certificate or private key file not found.	未找到证书或私钥文件。
+x-ui.sh	No certificates found.	未找到证书。
+x-ui.sh	Available domains:	可用域名：
+x-ui.sh	Please choose a domain to set the panel paths: 	请选择一个域名来设置面板路径：
+x-ui.sh	This will obtain a certificate for your server	这将为您的服务器获取证书。
+x-ui.sh	Do you want to proceed?	您想继续吗？
+x-ui.sh	Do you have an IPv6 address to include? (leave empty to skip): 	您是否有 IPv6 地址需要填写？（留空则跳过）：
+x-ui.sh	Port to use for ACME HTTP-01 listener (default 80): 	用于 ACME HTTP-01 监听器的端口（默认为 80）：
+x-ui.sh	Enter another port for acme.sh standalone listener (leave empty to abort): 	请输入 acme.sh 独立监听器的另一个端口（留空则中止）：
+x-ui.sh	Would you like to set this certificate for the panel? (y/n): 	是否要为面板设置此证书？（y/n）
+x-ui.sh	acme.sh could not be found. we will install it	找不到 acme.sh 文件。我们将安装它。
+x-ui.sh	Please enter your domain name: 	请输入您的域名：
+x-ui.sh	Please choose which port to use (default is 80): 	请选择要使用的端口（默认端口为 80）：
+x-ui.sh	Would you like to modify --reloadcmd for ACME? (y/n): 	您是否要修改 ACME 的 --reloadcmd 参数？（y/n）
+x-ui.sh	Please enter your reloadcmd (example: systemctl reload nginx ; x-ui restart): 	请输入您的 reloadcmd 命令（例如：systemctl reload nginx ; x-ui restart）：
+x-ui.sh	Installing key to:	安装密钥至：
+x-ui.sh	Installing full chain to:	安装全链至：
+x-ui.sh	Do you confirm the information and wish to proceed? [y/n]	您是否确认信息无误并希望继续？[y/n]
+x-ui.sh	acme.sh could not be found. We will install it.	找不到 acme.sh 文件。我们将安装它。
+x-ui.sh	Input your domain here: 	请在此处输入您的域名：
+x-ui.sh	Are you using a Cloudflare API Token or Global API Key? (t/g) [Default t]: 	您使用的是 Cloudflare API 令牌还是全局 API 密钥？（t/g）[默认 t]：
+x-ui.sh	Input your key here: 	请在此处输入您的密钥：
+x-ui.sh	Input your email here: 	请在此处输入您的电子邮件地址：
+x-ui.sh	Input your token here: 	请在此处输入您的令牌：
+x-ui.sh	Installing Speedtest using snap...	使用 snap 安装 Speedtest...
+x-ui.sh	Error: Package manager not found. You may need to install Speedtest manually.	错误：未找到软件包管理器。您可能需要手动安装 Speedtest。
+x-ui.sh	Proceed with installation of Fail2ban & IP Limit?	继续安装 Fail2ban 和 IP Limit 吗？
+x-ui.sh	Please enter new Ban Duration in Minutes [default 30]: 	请输入新的封禁时长（分钟）[默认值：30]：
+x-ui.sh	Proceed with Unbanning everyone from IP Limit jail?	是否继续解除所有IP限制用户的封禁？
+x-ui.sh	Enter the IP address you want to ban: 	请输入您要屏蔽的 IP 地址：
+x-ui.sh	Enter the IP address you want to unban: 	请输入您要解除封禁的IP地址：
+x-ui.sh	Ban|Unban	封禁|解封
+x-ui.sh	Please obtain a certificate or set up SSH port forwarding.	请获取证书或设置SSH端口转发。
+x-ui.sh	Standard SSH command:	标准 SSH 命令：
+x-ui.sh	\nIf using SSH key:	如果使用 SSH 密钥：
+x-ui.sh	\nAfter connecting, access the panel at:	连接成功后，请访问控制面板：
+x-ui.sh	\nChoose an option:	请选择一个选项：
+x-ui.sh	\nNo listenIP configured. Choose an option:	未配置监听IP地址。请选择一个选项：
+x-ui.sh	1. Use default IP (127.0.0.1)	1. 使用默认 IP 地址 (127.0.0.1)
+x-ui.sh	2. Set a custom IP	2. 设置自定义 IP
+x-ui.sh	Select an option (1 or 2): 	请选择一个选项（1 或 2）：
+x-ui.sh	postgresql	PostgreSQL
+x-ui.sh	this machine, including any used by other applications. This cannot be undone.	这台机器，包括任何其他应用程序使用的机器。此操作无法撤销。
+x-ui.sh	Also purge PostgreSQL and delete all of its data?	同时清除 PostgreSQL 并删除其所有数据？
+x-ui.sh	# Added by 3x-ui: allow password logins for the panel database.	# 由 3x-ui 添加：允许面板数据库使用密码登录。
+x-ui.sh	Run setup anyway (ensures the xui database/user exist)?	仍然运行安装程序（以确保 xui 数据库/用户存在）？
+x-ui.sh	Continue?	继续？
+x-ui.sh	A PostgreSQL database was created in this session:	本次会话中创建了一个PostgreSQL数据库：
+x-ui.sh	Migrate into this database?	迁移到这个数据库？
+x-ui.sh	Choose [1]: 	选择[1]：
+x-ui.sh	Output file (leave empty to auto-name next to input): 	输出文件（留空则自动命名为与输入文件相同的名称）：
+x-ui.sh	Please enter your selection [0-28]: 	请输入您的选择（0-28）：

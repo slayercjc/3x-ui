@@ -779,7 +779,7 @@ ssl_cert_issue() {
         echo -e "\n${green}\t1.${plain} Preset: systemctl reload nginx ; systemctl restart x-ui"
         echo -e "${green}\t2.${plain} Input your own command"
         echo -e "${green}\t0.${plain} Keep default reloadcmd"
-        read -rp "请选择一个选项：" choice
+        read -rp "请选择一个选项： " choice
         case "$choice" in
             1)
                 echo -e "${green}Reloadcmd is: systemctl reload nginx ; systemctl restart x-ui${plain}"
@@ -878,11 +878,11 @@ prompt_and_setup_ssl() {
     local ssl_choice=""
     SSL_SCHEME="https"
 
-    echo -e "${yellow}Choose SSL certificate setup method:${plain}"
-    echo -e "${green}1.${plain} Let's Encrypt for Domain (90-day validity, auto-renews)"
-    echo -e "${green}2.${plain} Let's Encrypt for IP Address (6-day validity, auto-renews)"
-    echo -e "${green}3.${plain} Custom SSL Certificate (Path to existing files)"
-    echo -e "${green}4.${plain} Skip SSL (advanced — behind reverse proxy / SSH tunnel only)"
+    echo -e "${yellow}请选择 SSL 证书设置方式：${plain}"
+    echo -e "${green}1.${plain} 为域名申请 Let's Encrypt 证书 (90-day validity, auto-renews)"
+    echo -e "${green}2.${plain} 为 IP 地址申请 Let's Encrypt 证书 (6-day validity, auto-renews)"
+    echo -e "${green}3.${plain} 自定义 SSL 证书 (Path to existing files)"
+    echo -e "${green}4.${plain} 跳过 SSL (advanced — behind reverse proxy / SSH tunnel only)"
     echo -e "${blue}Note:${plain} Options 1 & 2 require port 80 open. Option 3 requires manual paths."
     echo -e "${blue}Note:${plain} Option 4 serves the panel over plain HTTP — only safe behind nginx/Caddy or an SSH tunnel."
     if [[ "$NONINTERACTIVE" == "1" ]]; then
@@ -939,7 +939,7 @@ prompt_and_setup_ssl() {
                 if [[ -n "$ip_confirm" && "$ip_confirm" != "y" && "$ip_confirm" != "Y" ]]; then
                     server_ip=""
                     while [[ -z "$server_ip" ]]; do
-                        read -rp "请输入您的服务器地址's public IPv4 address: " server_ip
+                        read -rp "请输入服务器信息's public IPv4 address: " server_ip
                         server_ip="${server_ip// /}"
                         if [[ ! "$server_ip" =~ ^[0-9]+\.[0-9]+\.[0-9]+\.[0-9]+$ ]]; then
                             echo -e "${red}Invalid IPv4 address. Please try again.${plain}"
@@ -983,7 +983,7 @@ prompt_and_setup_ssl() {
 
             # 3.2 Loop for Certificate Path
             while true; do
-                read -rp "输入证书路径（关键字：.crt / 完整证书链）：" custom_cert
+                read -rp "请输入证书路径 (keywords: .crt / fullchain): " custom_cert
                 # Strip quotes if present
                 custom_cert=$(echo "$custom_cert" | tr -d '"' | tr -d "'")
 
@@ -1000,7 +1000,7 @@ prompt_and_setup_ssl() {
 
             # 3.3 Loop for Private Key Path
             while true; do
-                read -rp "输入私钥路径（关键字：.key / privatekey）：" custom_key
+                read -rp "请输入私钥路径 (keywords: .key / privatekey): " custom_key
                 # Strip quotes if present
                 custom_key=$(echo "$custom_key" | tr -d '"' | tr -d "'")
 
@@ -1110,7 +1110,7 @@ config_after_install() {
         else
             echo -e "${yellow}Could not auto-detect server IP from any provider.${plain}"
             while [[ -z "$server_ip" ]]; do
-                read -rp "请输入您的服务器地址's public IPv4 address: " server_ip
+                read -rp "请输入服务器信息's public IPv4 address: " server_ip
                 server_ip="${server_ip// /}"
                 if [[ ! "$server_ip" =~ ^[0-9]+\.[0-9]+\.[0-9]+\.[0-9]+$ ]]; then
                     echo -e "${red}Invalid IPv4 address. Please try again.${plain}"
@@ -1141,7 +1141,7 @@ config_after_install() {
                     db_choice="1"
                 fi
             else
-                read -rp "选择[1]：" db_choice
+                read -rp "请选择 [1]： " db_choice
                 db_choice="${db_choice:-1}"
             fi
             if [[ "$db_choice" == "2" ]]; then
@@ -1189,7 +1189,7 @@ config_after_install() {
                     echo ""
                     echo -e "1）在本地安装PostgreSQL并创建一个专用用户/数据库（推荐）"
                     echo -e "2) 使用现有的 PostgreSQL 服务器（输入 DSN）"
-                    read -rp "选择[1]：" pg_mode
+                    read -rp "请选择 [1]： " pg_mode
                     pg_mode="${pg_mode:-1}"
                     if [[ "$pg_mode" == "2" ]]; then
                         while [[ -z "$xui_dsn" ]]; do
@@ -1222,7 +1222,7 @@ config_after_install() {
                             echo -e "2) 输入外部 DSN"
                             echo -e "3）中止安装"
                             echo -e "4）回退到 SQLite"
-                            read -rp "选择[1]：" pg_fail
+                            read -rp "请选择 [1]： " pg_fail
                             pg_fail="${pg_fail:-1}"
                             case "$pg_fail" in
                                 2) pg_mode="2" ;;
@@ -1278,9 +1278,9 @@ EOF
 
             echo ""
             echo -e "${green}═══════════════════════════════════════════${plain}"
-            echo -e "${green}     SSL Certificate Setup (RECOMMENDED)   ${plain}"
+            echo -e "${green}     SSL 证书设置（推荐）   ${plain}"
             echo -e "${green}═══════════════════════════════════════════${plain}"
-            echo -e "${yellow}SSL is strongly recommended. Skip only if a reverse proxy${plain}"
+            echo -e "${yellow}强烈建议使用 SSL。 Skip only if a reverse proxy${plain}"
             echo -e "${yellow}or SSH tunnel handles TLS for you.${plain}"
             echo -e "${yellow}Let's Encrypt now supports both domains and IP addresses!${plain}"
             echo ""
@@ -1356,7 +1356,7 @@ EOF
             if [[ -z "${existing_cert}" ]]; then
                 echo ""
                 echo -e "${green}═══════════════════════════════════════════${plain}"
-                echo -e "${green}     SSL Certificate Setup (RECOMMENDED)   ${plain}"
+                echo -e "${green}     SSL 证书设置（推荐）   ${plain}"
                 echo -e "${green}═══════════════════════════════════════════${plain}"
                 echo -e "${yellow}Let's Encrypt now supports both domains and IP addresses!${plain}"
                 echo ""
@@ -1397,7 +1397,7 @@ EOF
         if [[ -z "$existing_cert" ]]; then
             echo ""
             echo -e "${green}═══════════════════════════════════════════${plain}"
-            echo -e "${green}     SSL Certificate Setup (RECOMMENDED)   ${plain}"
+            echo -e "${green}     SSL 证书设置（推荐）   ${plain}"
             echo -e "${green}═══════════════════════════════════════════${plain}"
             echo -e "${yellow}Let's Encrypt now supports both domains and IP addresses!${plain}"
             echo ""
@@ -1567,7 +1567,7 @@ _xui_service_write_paths_dropin() {
     if [[ -n "$whitespace_paths" ]]; then
         echo "警告：这些文件夹包含空格，因此被遗漏了。" >&2
         echo "         10-xui-sandbox.conf: $whitespace_paths" >&2
-        echo "   小组 cannot write to them under the unit's sandbox." >&2
+        echo "         面板无法在服务单元下写入这些目录's sandbox." >&2
     fi
     line="${line# }"
     [[ -n "$line" ]] || return 1
