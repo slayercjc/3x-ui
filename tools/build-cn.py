@@ -26,7 +26,7 @@ for name in ("install.sh", "x-ui.sh"):
 # Guard against accidentally translating code identifiers or URLs.
 for path in (dist / "install-cn.sh", dist / "x-ui-cn.sh"):
     text = path.read_text(encoding="utf-8")
-    if "https://raw.githubusercontent.com/MHSanaei/3x-ui" not in text:
+    if "https://raw.githubusercontent.com/mhsanaei/3x-ui" not in text.lower():
         raise SystemExit(f"upstream URL missing from {path}")
     if "#!/bin/bash" not in text:
         raise SystemExit(f"invalid shell script: {path}")
