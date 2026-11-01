@@ -2060,9 +2060,11 @@ if [[ -x /usr/bin/x-ui ]]; then
     if curl -fsSL "${_xui_cn_url}" -o /usr/bin/x-ui-cn.tmp; then
         chmod +x /usr/bin/x-ui-cn.tmp
         mv -f /usr/bin/x-ui-cn.tmp /usr/bin/x-ui
-        if [[ -n "${xui_folder:-}" && -d "${xui_folder}" ]]; then
-            curl -fsSL "${_xui_cn_url}" -o "${xui_folder}/x-ui.sh"
-            chmod +x "${xui_folder}/x-ui.sh"
-        fi
+        for _xui_cn_target in "${xui_folder:-/usr/local/x-ui}/x-ui.sh" "/usr/local/x-ui/x-ui.sh"; do
+            if [[ -d "$(dirname "${_xui_cn_target}")" ]]; then
+                curl -fsSL "${_xui_cn_url}" -o "${_xui_cn_target}"
+                chmod +x "${_xui_cn_target}"
+            fi
+        done
     fi
 fi
