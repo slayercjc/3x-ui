@@ -44,6 +44,25 @@ replacements = {
 }
 for old, new in replacements.items():
     install_text = install_text.replace(old, new)
+
+# The release archive installs the official management script after the panel
+# files are unpacked. Replace the live command at the end of installation so
+# future `x-ui` invocations use the translated script as well.
+marker = "\n# 3x-ui-cn: install the translated management menu after the official install.\n"
+if marker not in install_text:
+    install_text += marker + '''
+if [[ -x /usr/bin/x-ui ]]; then
+    _xui_cn_url="https://raw.githubusercontent.com/slayercjc/3x-ui/main/dist/x-ui-cn.sh"
+    if curl -fsSL "${_xui_cn_url}" -o /usr/bin/x-ui-cn.tmp; then
+        chmod +x /usr/bin/x-ui-cn.tmp
+        mv -f /usr/bin/x-ui-cn.tmp /usr/bin/x-ui
+        if [[ -n "${xui_folder:-}" && -d "${xui_folder}" ]]; then
+            curl -fsSL "${_xui_cn_url}" -o "${xui_folder}/x-ui.sh"
+            chmod +x "${xui_folder}/x-ui.sh"
+        fi
+    fi
+fi
+'''
 install.write_text(install_text, encoding="utf-8", newline="\n")
 path.write_text(text, encoding="utf-8", newline="\n")
 print("Static Chinese menu patch applied")
