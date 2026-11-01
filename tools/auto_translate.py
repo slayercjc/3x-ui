@@ -29,7 +29,13 @@ def translate(text):
     )
     with urllib.request.urlopen(request, timeout=30) as response:
         data = json.load(response)
-    return data["data"]["translations"][0]["translatedText"]
+    # The result is inserted inside an existing shell string literal.
+    # Do not allow ASCII quotes or line breaks to change shell syntax.
+    return (data["data"]["translations"][0]["translatedText"]
+            .replace('"', '')
+            .replace("'", '')
+            .replace("\\", '')
+            .replace("\n", " "))
 
 for name in ("install.sh", "x-ui.sh"):
     text = (root / "dist" / f"upstream-{name}").read_text(encoding="utf-8")
@@ -38,7 +44,8 @@ for name in ("install.sh", "x-ui.sh"):
             continue
         # Only collect ordinary quoted display strings; skip URLs and shell substitutions.
         for match in re.findall(r'(?:(?:read|echo|confirm)[^\n]*?)?["\']([^"\']{8,})["\']', line):
-            if "$" in match or "http" in match or "=" in match:
+            if ("$" in match or "http" in match or "=" in match
+                    or any(token in match for token in ("[[", "]]", "&&", "||", ";;", "$("))):
                 continue
             if (name, match) not in known and re.search(r"[A-Za-z]{3,}", match):
                 print(f"Translating new prompt in {name}: {match}")
