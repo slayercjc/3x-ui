@@ -40,7 +40,7 @@ def translate(text):
 for name in ("install.sh", "x-ui.sh"):
     text = (root / "dist" / f"upstream-{name}").read_text(encoding="utf-8")
     for line in text.splitlines():
-        if not re.search(r"\b(echo|read|confirm)\b", line):
+        if not re.search(r"\b(echo|printf|read|confirm)\b", line):
             continue
         # Only collect ordinary quoted display strings; skip URLs and shell substitutions.
         for match in re.findall(r'(?:(?:read|echo|confirm)[^\n]*?)?["\']([^"\']{8,})["\']', line):
